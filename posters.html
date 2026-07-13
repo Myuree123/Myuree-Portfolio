@@ -171,37 +171,43 @@
     position: relative;
     background: var(--surface);
     border-radius: 12px;
-    padding: 20px;
-    max-width: 90vw;
-    max-height: 90vh;
+    padding: 40px;
+    max-width: 50vw;
+    max-height: 85vh;
     overflow: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .modal img{
     width: 100%;
     height: auto;
     display: block;
+    max-width: 100%;
   }
   .modal-close{
     position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 40px;
-    height: 40px;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
     background: var(--navy);
     color: var(--surface);
     border: none;
     border-radius: 50%;
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
     z-index: 101;
   }
   .modal-close:hover{
     background: var(--deep-blue);
+    transform: translateX(-50%) scale(1.1);
   }
 
   /* ---------- CONTACT / FOOTER ---------- */
@@ -238,13 +244,13 @@
     .reveal{ opacity: 1; transform: none; transition: none; }
   }
 
-  @media (max-width: 640px){
+  @media (max-width: 768px){
     .poster-grid{ grid-template-columns: 1fr; }
     .hero{ padding: 72px 0 48px; }
     .modal-content{
-      max-width: 95vw;
+      max-width: 85vw;
       max-height: 80vh;
-      padding: 16px;
+      padding: 30px;
     }
   }
 
