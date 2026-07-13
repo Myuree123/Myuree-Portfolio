@@ -247,6 +247,27 @@
     color: var(--muted);
   }
 
+  /* ---------- PROJECT BUTTONS ---------- */
+  .project-button{
+    margin-top: 12px;
+    padding: 10px 16px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .project-button:hover{
+    background: var(--deep-blue);
+    transform: translateY(-2px);
+  }
+  .project-button:active{
+    transform: translateY(0);
+  }
+
   /* ---------- CERTIFICATIONS ---------- */
   .cert-list{
     display: flex;
@@ -377,8 +398,8 @@
         <span class="section-num mono">01</span>
         <h2>About</h2>
       </div>
-      <p class="about-text reveal">Hi! I'm Myuree, a Grade 10 student at Chinguacousy Secondary School with a passion for technology, design, leadership, and community service. I love learning new skills, especially programming, and I enjoy challenging myself with projects ranging from Python applications to engineering activities in Aerospace Club. Whether I'm coding, volunteering, or presenting to younger students, I enjoy finding creative ways to make a positive impact.</p>
-      <p class="about-text reveal">Outside of school, you'll usually find me playing baseball with the Blue Jays Girls At Bat program, studying Carnatic music, creating graphic designs, or volunteering at community events. I enjoy meeting new people, developing my leadership skills, and continuously improving both personally and professionally.</p>
+      <p class="about-text reveal">Hi! I'm Myuree, a Grade 10 student at Chinguacousy Secondary School with a passion for technology, design, leadership, and community service. I love learning new skills and taking on projects that challenge me and create positive impact.</p>
+      <p class="about-text reveal">Outside of school, you'll usually find me playing baseball with the Blue Jays Girls At Bat program, studying Carnatic music, creating graphic designs, or volunteering in my community. I'm driven by curiosity and a desire to connect with people and make a difference.</p>
     </div>
   </section>
 
@@ -485,16 +506,16 @@
     </div>
   </section>
 
-  
 <section id="projects">
 <div class="wrap">
 <div class="section-head"><span class="section-num mono">03</span><h2>💻 Featured Projects</h2></div>
 <div class="skill-grid">
 <div class="skill-card"><h3>Chemical Reaction Quiz</h3><p>A Python quiz application with hints, scoring, and interactive questions.</p><div style="margin-top:12px;height:180px;border:2px dashed #cfd8e6;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#789;">Project Screenshot (Coming Soon)</div></div>
-<div class="skill-card"><h3>SterilWIZE Marketing</h3><p>Designed professional brochures, posters, and promotional materials.</p><div style="margin-top:12px;height:180px;border:2px dashed #cfd8e6;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#789;">Poster Image</div></div>
-<div class="skill-card"><h3>Arduino Projects</h3><p>Built Arduino-based systems including traffic lights and sensor projects.</p><div style="margin-top:12px;height:180px;border:2px dashed #cfd8e6;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#789;">Arduino Photo</div></div>
-<div class="skill-card"><h3>Portfolio Website</h3><p>Designed and developed this responsive personal portfolio using HTML, CSS, and JavaScript.</p><div style="margin-top:12px;height:180px;border:2px dashed #cfd8e6;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#789;">Website Preview</div></div>
+<div class="skill-card"><h3>SterilWIZE Marketing</h3><p>Designed professional brochures, posters, and promotional materials.</p><button class="project-button" onclick="alert('View Posters feature coming soon!')">View Posters</button></div>
+<div class="skill-card"><h3>Arduino Projects</h3><p>Built Arduino-based systems including traffic lights and sensor projects.</p><div style="margin-top:12px;height:180px;border:2px dashed #cfd8e6;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#789;">Project Screenshot (Coming Soon)</div></div>
+<div class="skill-card"><h3>Portfolio Website</h3><p>Designed and developed this responsive personal portfolio using HTML, CSS, and JavaScript.</p><div style="margin-top:12px;height:180px;border:2px dashed #cfd8e6;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#789;">Project Screenshot (Coming Soon)</div></div>
 </div></div></section>
+
 <section id="skills">
     <div class="wrap">
       <div class="section-head">
