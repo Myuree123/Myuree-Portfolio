@@ -160,20 +160,21 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
     z-index: 100;
-    padding: 40px 20px;
-    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
   }
   .modal.active{
     display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .modal-content{
     position: relative;
     background: var(--surface);
     border-radius: 12px;
     padding: 20px;
-    max-width: 70vw;
+    max-width: 80vw;
+    max-height: 85vh;
+    overflow: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
@@ -185,20 +186,19 @@
     height: auto;
     display: block;
     max-width: 100%;
-    max-height: 70vh;
   }
   .modal-close{
     position: absolute;
-    bottom: 15px;
+    top: 15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background: var(--navy);
     color: var(--surface);
     border: none;
     border-radius: 50%;
-    font-size: 28px;
+    font-size: 26px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -250,10 +250,7 @@
     .hero{ padding: 72px 0 48px; }
     .modal-content{
       max-width: 90vw;
-      padding: 20px;
-    }
-    .modal img{
-      max-height: 60vh;
+      max-height: 80vh;
     }
   }
 
@@ -327,8 +324,8 @@
 <!-- Modal Popup -->
 <div id="imageModal" class="modal" onclick="closeModal(event)">
   <div class="modal-content" onclick="event.stopPropagation()">
-    <img id="modalImage" src="" alt="Full size poster">
     <button class="modal-close" onclick="closeModal()">&times;</button>
+    <img id="modalImage" src="" alt="Full size poster">
   </div>
 </div>
 
