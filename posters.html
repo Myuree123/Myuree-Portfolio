@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SterilWIZE Marketing Posters - Myuree Mahenthirathas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F9FC;
+    --surface: #FFFFFF;
+    --navy: #16233F;
+    --deep-blue: #1E3A5F;
+    --accent: #3B6EA5;
+    --accent-soft: #E4ECF7;
+    --muted: #5C6B82;
+    --line: #DCE3EE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    background: var(--bg);
+    color: var(--navy);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: 'Fraunces', serif; color: var(--navy); }
+
+  .mono{
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(247,249,252,0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-name{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--deep-blue);
+  }
+  .back-link{
+    font-size: 0.88rem;
+    color: var(--accent);
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .back-link:hover{ color: var(--deep-blue); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding: 96px 0 64px;
+  }
+  .eyebrow{
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+  .hero h1{
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+  .hero p{
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 62ch;
+  }
+
+  /* ---------- POSTER GRID ---------- */
+  .poster-section{ padding: 64px 0; }
+  .poster-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+    margin-top: 40px;
+  }
+  .poster-card{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .poster-card:hover{
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(59, 110, 165, 0.12);
+  }
+  .poster-image{
+    width: 100%;
+    height: 320px;
+    background: linear-gradient(135deg, var(--accent-soft), #f0f4f9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 20px;
+  }
+  .poster-card img{
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+  }
+  .poster-info{
+    padding: 20px;
+  }
+  .poster-info h3{
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .poster-info p{
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 64px 0 48px;
+    background: var(--deep-blue);
+    color: #EAF1FA;
+  }
+  footer .wrap{ display: flex; flex-direction: column; gap: 22px; }
+  footer h2{
+    color: #fff;
+    font-size: 1.8rem;
+  }
+  footer p{ color: #B9CADE; max-width: 46ch; }
+  .foot-note{
+    font-size: 0.78rem;
+    color: #85A0BE;
+    margin-top: 24px;
+  }
+
+  /* ---------- REVEAL ANIMATION ---------- */
+  .reveal{
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity: 1; transform: none; transition: none; }
+  }
+
+  @media (max-width: 640px){
+    .poster-grid{ grid-template-columns: 1fr; }
+    .hero{ padding: 72px 0 48px; }
+  }
+
+  :focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <span class="nav-name">SterilWIZE Marketing</span>
+    <a href="index.html" class="back-link">← Back to Portfolio</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="eyebrow">Design Portfolio</div>
+    <h1>SterilWIZE Marketing Posters</h1>
+    <p>Professional brochures, posters, and promotional materials designed for the SterilWIZE campaign. Below is a collection of marketing materials showcasing design, typography, and visual communication.</p>
+  </section>
+
+  <section class="poster-section wrap">
+    <div class="poster-grid">
+      <div class="poster-card reveal">
+        <div class="poster-image">Poster 1 (Coming Soon)</div>
+        <div class="poster-info">
+          <h3>Campaign Poster #1</h3>
+          <p>Professional marketing poster with compelling visuals and clear messaging.</p>
+        </div>
+      </div>
+
+      <div class="poster-card reveal">
+        <div class="poster-image">Poster 2 (Coming Soon)</div>
+        <div class="poster-info">
+          <h3>Campaign Poster #2</h3>
+          <p>Promotional poster highlighting key features and brand identity.</p>
+        </div>
+      </div>
+
+      <div class="poster-card reveal">
+        <div class="poster-image">Brochure Design (Coming Soon)</div>
+        <div class="poster-info">
+          <h3>Professional Brochure</h3>
+          <p>Multi-page brochure with comprehensive product information.</p>
+        </div>
+      </div>
+
+      <div class="poster-card reveal">
+        <div class="poster-image">Social Media Assets (Coming Soon)</div>
+        <div class="poster-info">
+          <h3>Social Media Assets</h3>
+          <p>Promotional materials optimized for social media platforms.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Questions about my work?</h2>
+    <p>I'm always open to discussing design projects, opportunities, and collaboration. Feel free to reach out!</p>
+    <p class="foot-note">References available upon request.</p>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
