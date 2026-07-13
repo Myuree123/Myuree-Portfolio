@@ -114,28 +114,28 @@
     border-radius: 12px;
     overflow: hidden;
     transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
   }
   .poster-card:hover{
     border-color: var(--accent);
     transform: translateY(-4px);
     box-shadow: 0 12px 24px rgba(59, 110, 165, 0.12);
   }
-  .poster-image{
+  .poster-image-container{
     width: 100%;
     height: 320px;
     background: linear-gradient(135deg, var(--accent-soft), #f0f4f9);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--muted);
-    font-size: 0.95rem;
-    text-align: center;
-    padding: 20px;
+    overflow: hidden;
+    position: relative;
   }
   .poster-card img{
     width: 100%;
-    height: 320px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
+    padding: 12px;
   }
   .poster-info{
     padding: 20px;
@@ -148,6 +148,60 @@
   .poster-info p{
     font-size: 0.9rem;
     color: var(--muted);
+  }
+
+  /* ---------- MODAL POPUP ---------- */
+  .modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal.active{
+    display: flex;
+  }
+  .modal-content{
+    position: relative;
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+  .modal img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .modal-close{
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    background: var(--navy);
+    color: var(--surface);
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    z-index: 101;
+  }
+  .modal-close:hover{
+    background: var(--deep-blue);
   }
 
   /* ---------- CONTACT / FOOTER ---------- */
@@ -187,6 +241,11 @@
   @media (max-width: 640px){
     .poster-grid{ grid-template-columns: 1fr; }
     .hero{ padding: 72px 0 48px; }
+    .modal-content{
+      max-width: 95vw;
+      max-height: 80vh;
+      padding: 16px;
+    }
   }
 
   :focus-visible{
@@ -208,37 +267,45 @@
   <section class="hero wrap">
     <div class="eyebrow">Design Portfolio</div>
     <h1>SterilWIZE Marketing Posters</h1>
-    <p>Professional brochures, posters, and promotional materials designed for the SterilWIZE campaign. Below is a collection of marketing materials showcasing design, typography, and visual communication excellence.</p>
+    <p>Professional brochures, posters, and promotional materials designed for the SterilWIZE campaign. Below is a collection of marketing materials showcasing design, typography, and visual communication excellence. Click on any poster to view it in full size.</p>
   </section>
 
   <section class="poster-section wrap">
     <div class="poster-grid">
-      <div class="poster-card reveal">
-        <img src="images/1.png" alt="Campaign Poster #1">
+      <div class="poster-card reveal" onclick="openModal('images/1.png')">
+        <div class="poster-image-container">
+          <img src="images/1.png" alt="Campaign Poster #1">
+        </div>
         <div class="poster-info">
           <h3>Campaign Poster #1</h3>
           <p>Professional marketing poster with compelling visuals and clear messaging.</p>
         </div>
       </div>
 
-      <div class="poster-card reveal">
-        <img src="images/2.png" alt="Campaign Poster #2">
+      <div class="poster-card reveal" onclick="openModal('images/2.png')">
+        <div class="poster-image-container">
+          <img src="images/2.png" alt="Campaign Poster #2">
+        </div>
         <div class="poster-info">
           <h3>Campaign Poster #2</h3>
           <p>Promotional poster highlighting key features and brand identity.</p>
         </div>
       </div>
 
-      <div class="poster-card reveal">
-        <img src="images/3.png" alt="Professional Brochure">
+      <div class="poster-card reveal" onclick="openModal('images/3.png')">
+        <div class="poster-image-container">
+          <img src="images/3.png" alt="Professional Brochure">
+        </div>
         <div class="poster-info">
           <h3>Professional Brochure</h3>
           <p>Multi-page brochure with comprehensive product information.</p>
         </div>
       </div>
 
-      <div class="poster-card reveal">
-        <img src="images/4.png" alt="Social Media Assets">
+      <div class="poster-card reveal" onclick="openModal('images/4.png')">
+        <div class="poster-image-container">
+          <img src="images/4.png" alt="Social Media Assets">
+        </div>
         <div class="poster-info">
           <h3>Social Media Assets</h3>
           <p>Promotional materials optimized for social media platforms.</p>
@@ -247,6 +314,14 @@
     </div>
   </section>
 </main>
+
+<!-- Modal Popup -->
+<div id="imageModal" class="modal" onclick="closeModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <img id="modalImage" src="" alt="Full size poster">
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -257,6 +332,7 @@
 </footer>
 
 <script>
+  // Intersection Observer for reveal animation
   const revealEls = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -267,6 +343,28 @@
     });
   }, { threshold: 0.12 });
   revealEls.forEach(el => observer.observe(el));
+
+  // Modal functions
+  function openModal(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    modalImage.src = imageSrc;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(event) {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  // Close modal when pressing Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
 </script>
 
 </body>
